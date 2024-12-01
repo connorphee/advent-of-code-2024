@@ -1,18 +1,12 @@
 import unittest
+from typing import List
+
 
 class DayOneSolution:
-    def find_difference(self, list_one, list_two):
-        list_one.sort()
-        list_two.sort()
-
-        total_difference = 0;
-
-        while(len(list_one) > 0):
-            list_one_largest = list_one.pop()
-            list_two_largest = list_two.pop()
-            total_difference+= abs(list_one_largest - list_two_largest)
-
-        return total_difference 
+    def find_difference(self, list_one: List[int], list_two: List[int]) -> int:
+        sorted_one = sorted(list_one)
+        sorted_two = sorted(list_two)
+        return sum(abs(a - b) for a,b in zip(sorted_one, sorted_two))
 
 
 class DayOneUnitTest(unittest.TestCase):
